@@ -106,7 +106,7 @@
             android:id="@+id/addCartLayout"
             layout="@layout/layout_add_cart"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:visibility="gone" />
@@ -114,7 +114,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addCartButton"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bg_add_cart_button"
