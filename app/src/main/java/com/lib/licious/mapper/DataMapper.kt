@@ -1,8 +1,10 @@
-package com.lib.licious
+package com.lib.licious.mapper
 
 import LiciousDataResposne
 import android.content.Context
 import com.google.gson.Gson
+import com.lib.licious.model.FilterDataModel
+import com.lib.licious.model.MenuDataModel
 import java.io.InputStream
 import java.util.*
 

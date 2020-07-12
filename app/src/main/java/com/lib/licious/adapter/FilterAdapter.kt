@@ -1,10 +1,13 @@
-package com.lib.licious
+package com.lib.licious.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.lib.licious.model.FilterDataModel
+import com.lib.licious.R
+import com.lib.licious.listener.OnItemClickListener
 import kotlinx.android.synthetic.main.item_filter.view.*
 
 class FilterAdapter(private val filterModelList: List<FilterDataModel>, private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {

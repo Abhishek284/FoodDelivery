@@ -1,8 +1,11 @@
-package com.lib.licious
+package com.lib.licious.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.lib.licious.mapper.DataMapper
+import com.lib.licious.model.FilterDataModel
+import com.lib.licious.model.MenuDataModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable

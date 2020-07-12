@@ -1,4 +1,4 @@
-package com.lib.licious
+package com.lib.licious.listener
 
 interface OnItemClickListener {
 

@@ -1,10 +1,12 @@
-package com.lib.licious
+package com.lib.licious.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.lib.licious.model.MenuDataModel
+import com.lib.licious.R
 import kotlinx.android.synthetic.main.item_meat_product.view.*
 
 class MenuDataAdapter(private val menuDataModelList: List<MenuDataModel>?) : RecyclerView.Adapter<MenuDataAdapter.MenuViewHolder>() {
@@ -22,7 +24,7 @@ class MenuDataAdapter(private val menuDataModelList: List<MenuDataModel>?) : Rec
         holder.itemView.run {
             meatName.text = menuDataModelList?.get(position)?.name
             priceTxt.text = String.format("%s %d", "\u20B9", menuDataModelList?.get(position)?.price?.toInt())
-            weightText.text = String.format("%s %s","Net wt." + menuDataModelList?.get(position)?.weight)
+            weightText.text = String.format("%s %s","Net wt." , menuDataModelList?.get(position)?.weight)
             Glide.with(this).load(menuDataModelList?.get(position)?.imageUrl).centerCrop().placeholder(R.drawable.placeholder_food).into(meatImage)
         }
     }
