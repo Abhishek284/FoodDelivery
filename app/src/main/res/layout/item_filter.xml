@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deliveryTypeButton"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_margin="@dimen/dp_8"
+    android:background="@drawable/bg_filter_button_enabled">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/deliveryTypeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:text="All"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_12" />
+</RelativeLayout>

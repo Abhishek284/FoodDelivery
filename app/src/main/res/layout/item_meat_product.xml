@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@color/appBackground"
+    android:orientation="vertical">
+
+    <!--    <com.facebook.shimmer.ShimmerFrameLayout-->
+    <!--        android:id="@+id/shimmer_view_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        >-->
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/meatImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@id/meatName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--    </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/meatName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/menuItemNameColor"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meatImage"
+        tools:text="Lamb" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/weightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/sp_10"
+        app:layout_constraintBottom_toTopOf="@id/priceTxt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rlLayout"
+        tools:text="Net wt. 500gm" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/priceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/sp_10"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rlLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightText"
+        tools:text="Rs 250" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/oldPriceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="\u20B9 360"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/sp_10"
+        app:layout_constraintBottom_toBottomOf="@id/priceTxt"
+        app:layout_constraintLeft_toRightOf="@id/priceTxt"
+        app:layout_constraintTop_toTopOf="@id/priceTxt" />
+
+    <View
+        android:layout_width="24dp"
+        android:layout_height="1dp"
+        android:layout_centerVertical="true"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@id/oldPriceTxt"
+        app:layout_constraintLeft_toLeftOf="@id/oldPriceTxt"
+        app:layout_constraintRight_toRightOf="@id/oldPriceTxt"
+        app:layout_constraintTop_toTopOf="@id/oldPriceTxt" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addCartGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <RelativeLayout
+        android:id="@+id/rlLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/addCartGuideLine"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meatName">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addCartButton"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_add_cart_button"
+            android:gravity="center"
+            android:text="@string/text_add_to_cart"
+            android:textColor="@color/buttonColorAddToCart"
+            android:textSize="@dimen/sp_8" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
