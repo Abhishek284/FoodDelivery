@@ -12,7 +12,11 @@ import com.lib.licious.model.MenuDataModel
 import kotlinx.android.synthetic.main.item_meat_product.view.*
 import kotlinx.android.synthetic.main.layout_add_cart.view.*
 
-class MenuDataAdapter(private val menuDataModelList: List<MenuDataModel>?) : RecyclerView.Adapter<MenuDataAdapter.MenuViewHolder>() {
+class MenuDataAdapter(private var menuDataModelList: List<MenuDataModel>?) : RecyclerView.Adapter<MenuDataAdapter.MenuViewHolder>() {
+
+    fun setMenuList(menuDataModelList: List<MenuDataModel>?) {
+        this.menuDataModelList = menuDataModelList
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_meat_product, parent, false)

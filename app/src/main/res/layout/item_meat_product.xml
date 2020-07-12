@@ -8,6 +8,7 @@
     android:background="@color/appBackground"
     android:orientation="vertical">
 
+    <!--    TODO: Add shimmer-->
     <!--    <com.facebook.shimmer.ShimmerFrameLayout-->
     <!--        android:id="@+id/shimmer_view_container"-->
     <!--        android:layout_width="match_parent"-->
@@ -106,9 +107,9 @@
             layout="@layout/layout_add_cart"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:visibility="gone"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addCartButton"

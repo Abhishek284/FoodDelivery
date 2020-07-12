@@ -15,17 +15,28 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity(), OnItemClickListener {
 
+    private var hashMap: HashMap<String, List<MenuDataModel>> = HashMap()
+    private var currentType: String = ""
+
 
     private val viewModel by inject<MenuListViewModel>()
-
+    private var menuAdapter: MenuDataAdapter? = null
+    private var filterAdapter: FilterAdapter? = null
     private val menuListObserver: Observer<List<MenuDataModel>> = Observer {
-        val adapter = MenuDataAdapter(it)
-        recyclerViewMenu.adapter = adapter
+        menuAdapter = MenuDataAdapter(it)
+        recyclerViewMenu.adapter = menuAdapter
+        hashMap.put(currentType, it)
     }
 
     private val filterListObserver: Observer<List<FilterDataModel>> = Observer {
-        val adapter = FilterAdapter(it, this)
-        recyclerViewFilter.adapter = adapter
+        filterAdapter = FilterAdapter(it, this)
+        recyclerViewFilter.adapter = filterAdapter
+        it.forEach {
+            if (it.isSelected)
+                currentType = it.type
+        }
+        viewModel.dataModelList.observe(this, menuListObserver)
+        viewModel.getProductDataList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +54,19 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
         viewModel.filterList.observe(this, filterListObserver)
         viewModel.getFilterList()
-        viewModel.dataModelList.observe(this, menuListObserver)
-        viewModel.getProductDataList()
+
         setHeader(viewModel.getHeader())
     }
 
     override fun onItemClicked(type: String) {
-        viewModel.getFilteredMenuList(type)
+        currentType = type
+        if (hashMap.get(currentType) == null)
+            viewModel.getFilteredMenuList(type)
+        else {
+            menuAdapter?.setMenuList(hashMap.get(currentType))
+            menuAdapter?.notifyDataSetChanged()
+        }
+
     }
 
     private fun setHeader(text: String?) {
