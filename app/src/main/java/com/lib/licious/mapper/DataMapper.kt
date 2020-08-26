@@ -18,7 +18,7 @@ class DataMapper(private val context: Context) {
     fun convertJsonToDataClass(): List<MenuDataModel> {
         val menuDataModelList = mutableListOf<MenuDataModel>()
         getResponseFromJson().data?.products?.forEach {
-            menuDataModelList.add(MenuDataModel(it.productMerchantdising?.prImage, it.productMaster?.prName, it.productMaster?.prWeight, it.productPricing?.basePrice))
+            menuDataModelList.add(MenuDataModel(it.productMerchantdising?.prImage, it.productMaster?.prName, it.productMaster?.prWeight, it.productPricing?.basePrice, it?.productInventory?.stockUnits))
         }
         return menuDataModelList
     }
@@ -41,7 +41,7 @@ class DataMapper(private val context: Context) {
         val filterdMenuList = mutableListOf<MenuDataModel>()
         getResponseFromJson().data?.products?.forEach {
             if (it.productMerchantdising?.productDeliveryType?.toLowerCase(Locale.getDefault()) == type)
-                filterdMenuList.add(MenuDataModel(it.productMerchantdising?.prImage, it.productMaster?.prName, it.productMaster?.prWeight, it.productPricing?.basePrice))
+                filterdMenuList.add(MenuDataModel(it.productMerchantdising?.prImage, it.productMaster?.prName, it.productMaster?.prWeight, it.productPricing?.basePrice, it.productInventory?.stockUnits))
         }
         return filterdMenuList
     }

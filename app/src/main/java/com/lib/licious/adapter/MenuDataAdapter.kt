@@ -12,7 +12,7 @@ import com.lib.licious.model.MenuDataModel
 import kotlinx.android.synthetic.main.item_meat_product.view.*
 import kotlinx.android.synthetic.main.layout_add_cart.view.*
 
-class MenuDataAdapter(private var menuDataModelList: List<MenuDataModel>?) : RecyclerView.Adapter<MenuDataAdapter.MenuViewHolder>() {
+class MenuDataAdapter(private var menuDataModelList: List<MenuDataModel>?, private val onItemCountExceedListener: OnItemCountExceedListener) : RecyclerView.Adapter<MenuDataAdapter.MenuViewHolder>() {
 
     fun setMenuList(menuDataModelList: List<MenuDataModel>?) {
         this.menuDataModelList = menuDataModelList
@@ -51,8 +51,14 @@ class MenuDataAdapter(private var menuDataModelList: List<MenuDataModel>?) : Rec
 
             plusTxt.setOnClickListener {
                 val int = centerText.text.toString().toInt()
-                centerText.text = (int + 1).toString()
-                menuDataModelList?.get(position)?.count = int + 1
+                menuDataModelList?.get(position)?.maxCount?.let {
+                    if ((int + 1) > it) {
+                        onItemCountExceedListener.onCountLimitExceeded()
+                    } else {
+                        centerText.text = (int + 1).toString()
+                        menuDataModelList?.get(position)?.count = int + 1
+                    }
+                }
             }
 
             minusTxt.setOnClickListener {
@@ -71,6 +77,10 @@ class MenuDataAdapter(private var menuDataModelList: List<MenuDataModel>?) : Rec
 
     class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    }
+
+    interface OnItemCountExceedListener {
+        fun onCountLimitExceeded()
     }
 
 }

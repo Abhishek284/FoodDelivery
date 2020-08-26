@@ -1,6 +1,7 @@
 package com.lib.licious
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,7 +14,7 @@ import com.lib.licious.viewmodel.MenuListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
-class MainActivity : AppCompatActivity(), OnItemClickListener {
+class MainActivity : AppCompatActivity(), OnItemClickListener, MenuDataAdapter.OnItemCountExceedListener {
 
     private var hashMap: HashMap<String, List<MenuDataModel>> = HashMap()
     private var currentType: String = ""
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     private var menuAdapter: MenuDataAdapter? = null
     private var filterAdapter: FilterAdapter? = null
     private val menuListObserver: Observer<List<MenuDataModel>> = Observer {
-        menuAdapter = MenuDataAdapter(it)
+        menuAdapter = MenuDataAdapter(it, this)
         recyclerViewMenu.adapter = menuAdapter
         hashMap.put(currentType, it)
     }
@@ -71,5 +72,9 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     private fun setHeader(text: String?) {
         titleText.setText(text)
+    }
+
+    override fun onCountLimitExceeded() {
+        Toast.makeText(this, "Max limit reached", Toast.LENGTH_LONG).show()
     }
 }
